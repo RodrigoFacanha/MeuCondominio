@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface SindicoZeladorRepository extends JpaRepository<SindicoZelador, Integer> {
     
     Optional<SindicoZelador> findByEmail(String email);
+    Optional<SindicoZelador> findByEmailAndSenha(String email, String senha);
 }

@@ -13,4 +13,6 @@ public interface ChamadoRepository extends JpaRepository<Chamado, Integer> {
     List<Chamado> findByMoradorId(Integer moradorId);
     
     List<Chamado> findByStatus(StatusChamado status);
+
+    List<Chamado> findByMoradorId(Long moradorId);
 }
