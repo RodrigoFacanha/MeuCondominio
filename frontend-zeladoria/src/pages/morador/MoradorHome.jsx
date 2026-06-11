@@ -60,7 +60,7 @@ export default function MoradorHome() {
         <div className="mh-header-inner">
           <div className="mh-brand">
             <span className="mh-brand-icon" aria-hidden="true">⚙</span>
-            <span className="mh-brand-name">Meu Condominio</span>
+            <span className="mh-brand-name">Meu Condomínio</span>
           </div>
           <div className="mh-header-right">
             <span className="mh-usuario">

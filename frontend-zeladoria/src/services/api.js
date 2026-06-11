@@ -54,7 +54,7 @@ export const chamadosService = {
   atualizarStatus: (id, status) =>
     request(`/chamados/${id}/status`, {
       method: 'PATCH',
-      body: JSON.stringify({ status }),
+      body: JSON.stringify( status ),
     }),
 
   atribuirResponsavel: (id, responsavelId) =>

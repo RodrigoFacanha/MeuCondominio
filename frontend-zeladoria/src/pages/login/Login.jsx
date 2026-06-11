@@ -50,7 +50,7 @@ export default function Login() {
           <div className="login-logo">
             <span className="login-logo-icon" aria-hidden="true">⚙</span>
           </div>
-          <h1 className="login-title">Meu Condominio</h1>
+          <h1 className="login-title">Meu Condomínio</h1>
           <p className="login-subtitle">Sistema de Gestão Condominial</p>
         </div>
 

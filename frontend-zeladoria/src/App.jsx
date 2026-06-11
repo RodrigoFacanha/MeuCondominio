@@ -30,14 +30,11 @@ export default function App() {
           }
         />
 
-        <Route
-          path="/sindico"
-          element={
-            <RotaProtegida perfilExigido="sindico">
-              <SindicoHome />
-            </RotaProtegida>
-          }
-        />
+       <Route path="/sindico" element={
+  <RotaProtegida>
+    <SindicoHome />
+  </RotaProtegida>
+} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

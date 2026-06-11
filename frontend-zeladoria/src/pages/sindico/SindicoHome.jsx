@@ -5,12 +5,12 @@ import './SindicoHome.css';
 
 const STATUS_META = {
   ABERTO:       { label: 'Aberto',       cls: 'status-aberto' },
-  EM_ANDAMENTO: { label: 'Em andamento', cls: 'status-andamento' },
+  EM_ANALISE:   { label: 'Em análise',   cls: 'status-andamento' }, 
+  EM_EXECUCAO:  { label: 'Em andamento', cls: 'status-andamento' }, 
   CONCLUIDO:    { label: 'Concluído',    cls: 'status-concluido' },
-  CANCELADO:    { label: 'Cancelado',    cls: 'status-cancelado' },
 };
 
-const STATUS_OPTIONS = ['ABERTO', 'EM_ANDAMENTO', 'CONCLUIDO', 'CANCELADO'];
+const STATUS_OPTIONS = ['ABERTO', 'EM_ANALISE', 'EM_EXECUCAO', 'CONCLUIDO'];
 
 function StatusBadge({ status }) {
   const meta = STATUS_META[status] ?? { label: status, cls: '' };
@@ -92,7 +92,7 @@ export default function SindicoHome() {
         <div className="sh-header-inner">
           <div className="sh-brand">
             <span className="sh-brand-icon" aria-hidden="true">⚙</span>
-            <span className="sh-brand-name">Meu Condominio</span>
+            <span className="sh-brand-name">Meu Condomínio</span>
             <span className="sh-brand-role">Painel do Síndico</span>
           </div>
           <div className="sh-header-right">
