@@ -24,7 +24,9 @@ export default function NovoChamadoModal({ moradorId, onClose, onSucesso }) {
         titulo,
         descricao,
         localOcorrencia: local,
-        moradorId,
+        morador: {
+          id: moradorId 
+        }
       });
       onSucesso();
     } catch (err) {

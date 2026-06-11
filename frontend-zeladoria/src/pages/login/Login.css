@@ -1,6 +1,6 @@
 :root {
-  --c-bg:        #0f1114;
-  --c-surface:   #181b20;
+  --c-bg:        #eaedf1;
+  --c-surface:   #dce1eb;
   --c-border:    #2a2d33;
   --c-border-hi: #4a4f5a;
   --c-text:      #e8eaed;
@@ -164,7 +164,7 @@
  
 .login-input {
   padding: 10px 12px;
-  background: #0f1114;
+  background: #e1e4ea;
   border: 1px solid var(--c-border);
   border-radius: var(--radius);
   color: var(--c-text);
