@@ -5,10 +5,10 @@ import NovoChamadoModal from "../chamado/NovoChamadoModal.jsx";
 import './MoradorHome.css';
 
 const STATUS_META = {
-  ABERTO:      { label: 'Aberto',      cls: 'status-aberto' },
+  ABERTO:      { label: 'Aberto',       cls: 'status-aberto' },
   EM_ANDAMENTO:{ label: 'Em andamento', cls: 'status-andamento' },
-  CONCLUIDO:   { label: 'Concluído',   cls: 'status-concluido' },
-  CANCELADO:   { label: 'Cancelado',   cls: 'status-cancelado' },
+  CONCLUIDO:   { label: 'Concluído',    cls: 'status-concluido' },
+  CANCELADO:   { label: 'Cancelado',    cls: 'status-cancelado' },
 };
 
 function StatusBadge({ status }) {
@@ -29,30 +29,11 @@ export default function MoradorHome() {
     setCarregando(true);
     setErro('');
     try {
-      // 1. Comentamos a chamada da API para o Java não reclamar:
-      // const data = await chamadosService.listarPorMorador(usuario.id);
+      const data = await chamadosService.listarPorMorador(usuario.id);
       
-      // 2. Criamos os dados na mão (mockados) iguais aos do seu protótipo:
-      const data = [
-        { 
-          id: 1, 
-          titulo: 'Lâmpada queimada no corredor', 
-          descricao: 'A lâmpada do corredor próximo ao apartamento 302 está queimada há 3 dias.', 
-          status: 'EM_ANDAMENTO', 
-          localOcorrencia: 'Bloco B - 3º andar' 
-        },
-        { 
-          id: 2, 
-          titulo: 'Vazamento na garagem', 
-          descricao: 'Há um vazamento aparente vindo do teto da garagem.', 
-          status: 'ABERTO', 
-          localOcorrencia: 'Garagem - Vaga 45' 
-        }
-      ];
-      
-      // 3. O React pega esses dados de mentira e joga na tela
-      setChamados(data);
+      setChamados(data || []);
     } catch (err) {
+      console.error("Erro ao buscar chamados no banco:", err);
       setErro('Não foi possível carregar os chamados.');
     } finally {
       setCarregando(false);
@@ -90,10 +71,8 @@ export default function MoradorHome() {
         </div>
       </header>
 
-      {/* ── Main ── */}
       <main className="mh-main">
 
-        {/* Toolbar */}
         <div className="mh-toolbar">
           <div>
             <h1 className="mh-page-title">Meus Chamados</h1>
@@ -107,7 +86,6 @@ export default function MoradorHome() {
           </button>
         </div>
 
-        {/* Feedback states */}
         {erro && <p className="mh-erro">{erro}</p>}
 
         {carregando ? (
@@ -147,7 +125,6 @@ export default function MoradorHome() {
         )}
       </main>
 
-      {/* ── Modal Novo Chamado ── */}
       {modalAberto && (
         <NovoChamadoModal
           moradorId={usuario.id}

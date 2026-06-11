@@ -5,11 +5,11 @@ import MoradorHome from "./pages/morador/MoradorHome.jsx";
 import SindicoHome from "./pages/sindico/SindicoHome.jsx";
 
 function RotaProtegida({ children, perfilExigido }) {
-//  const token = localStorage.getItem('token');
- // const perfil = localStorage.getItem('perfil');
+   const token = localStorage.getItem('token');
+   const perfil = localStorage.getItem('perfil');
 
- // if (!token) return <Navigate to="/" replace />;
- // if (perfilExigido && perfil !== perfilExigido) return <Navigate to="/" replace />;
+   if (!token) return <Navigate to="/" replace />;
+   if (perfilExigido && perfil !== perfilExigido) return <Navigate to="/" replace />;
 
   return children;
 }
