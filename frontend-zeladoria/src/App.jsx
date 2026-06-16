@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login/Login.jsx";
 import Cadastro from "./pages/cadastro/Cadastro.jsx";
+import RecuperarSenha from "./pages/recuperarSenha/RecuperarSenha.jsx";
 import MoradorHome from "./pages/morador/MoradorHome.jsx";
 import SindicoHome from "./pages/sindico/SindicoHome.jsx";
 
@@ -20,6 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/recuperar-senha" element={<RecuperarSenha />} /> 
 
         <Route
           path="/morador"

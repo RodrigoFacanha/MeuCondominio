@@ -1,41 +1,38 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { authService } from '../../services/api';
-import './Login.css';
+import './RecuperarSenha.css';
 
 const PERFIS = [
   { label: 'Morador', value: 'morador' },
   { label: 'Síndico / Zelador', value: 'sindico' },
 ];
 
-export default function Login() {
+export default function RecuperarSenha() {
   const navigate = useNavigate();
   const [perfil, setPerfil] = useState('morador');
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
+  const [sucesso, setSucesso] = useState('');
   const [carregando, setCarregando] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setErro('');
+    setSucesso('');
     setCarregando(true);
 
     try {
-      const loginFn =
+      const recuperarFn =
         perfil === 'morador'
-          ? authService.loginMorador
-          : authService.loginSindico;
+          ? authService.recuperarSenhaMorador
+          : authService.recuperarSenhaSindico;
 
-      const data = await loginFn(email, senha);
-
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('perfil', perfil);
-      localStorage.setItem('usuario', JSON.stringify(data.usuario));
-
-      navigate(perfil === 'morador' ? '/morador' : '/sindico');
+      await recuperarFn(email);
+      setSucesso('E-mail de recuperação enviado com sucesso! Verifique sua caixa de entrada.');
+      setEmail('');
     } catch (err) {
-      setErro(err.message || 'Credenciais inválidas.');
+      setErro(err.message || 'Não foi possível solicitar a recuperação para este e-mail.');
     } finally {
       setCarregando(false);
     }
@@ -50,8 +47,8 @@ export default function Login() {
           <div className="login-logo">
             <span className="login-logo-icon" aria-hidden="true">⚙</span>
           </div>
-          <h1 className="login-title">Meu Condomínio</h1>
-          <p className="login-subtitle">Sistema de Gestão Condominial</p>
+          <h1 className="login-title">Recuperar Senha</h1>
+          <p className="login-subtitle">Insira seu e-mail cadastrado</p>
         </div>
 
         {/* Perfil toggle */}
@@ -61,7 +58,7 @@ export default function Login() {
               key={p.value}
               type="button"
               className={`login-toggle-btn${perfil === p.value ? ' active' : ''}`}
-              onClick={() => { setPerfil(p.value); setErro(''); }}
+              onClick={() => { setPerfil(p.value); setErro(''); setSucesso(''); }}
             >
               {p.label}
             </button>
@@ -84,22 +81,12 @@ export default function Login() {
             />
           </div>
 
-          <div className="login-field">
-            <label className="login-label" htmlFor="senha">Senha</label>
-            <input
-              id="senha"
-              className="login-input"
-              type="password"
-              autoComplete="current-password"
-              placeholder="••••••••"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              required
-            />
-          </div>
-
           {erro && (
             <p className="login-erro" role="alert">{erro}</p>
+          )}
+
+          {sucesso && (
+            <p className="login-sucesso" role="alert">{sucesso}</p>
           )}
 
           <button
@@ -107,27 +94,18 @@ export default function Login() {
             type="submit"
             disabled={carregando}
           >
-            {carregando ? 'Entrando…' : 'Entrar'}
+            {carregando ? 'Enviando…' : 'Enviar Link'}
           </button>
         </form>
 
+        {/* Links utilitários */}
         <div className="login-links">
-          <button
-  type="button"
-  className="login-link"
-  onClick={() => navigate('/recuperar-senha')} 
->
-  Esqueci minha senha
-</button>
-
-          <span className="login-links-divider" aria-hidden="true">·</span>
-
           <button
             type="button"
             className="login-link"
-            onClick={() => navigate('/cadastro')}
+            onClick={() => navigate('/')}
           >
-            Ainda não tem acesso? <strong>Criar conta</strong>
+            Voltar para o <strong>Login</strong>
           </button>
         </div>
 
@@ -135,4 +113,3 @@ export default function Login() {
     </div>
   );
 }
-

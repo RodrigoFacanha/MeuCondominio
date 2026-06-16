@@ -36,6 +36,18 @@ export const authService = {
       method: 'POST',
       body: JSON.stringify({ email, senha }),
     }),
+
+    recuperarSenhaMorador: (email) =>
+    request('/auth/morador/recuperar', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    }),
+
+  recuperarSenhaSindico: (email) =>
+    request('/auth/sindico/recuperar', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    }),
 };
 
 export const chamadosService = {

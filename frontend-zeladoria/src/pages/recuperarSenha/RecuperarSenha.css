@@ -1,0 +1,13 @@
+@import "../login/Login.css";
+
+
+.login-sucesso {
+  margin: 0;
+  padding: 9px 12px;
+  background: rgba(40, 167, 69, 0.08);
+  border: 1px solid rgba(40, 167, 69, 0.35);
+  border-radius: var(--radius);
+  color: #28a745;
+  font-size: 0.82rem;
+  font-family: monospace;
+}

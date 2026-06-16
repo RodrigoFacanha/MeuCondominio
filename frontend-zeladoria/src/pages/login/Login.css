@@ -65,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e2228;
+  background: #f0a500;
   border: 1px solid var(--c-border-hi);
   border-radius: var(--radius);
   margin-bottom: 4px;
@@ -111,6 +111,13 @@
   border-radius: var(--radius);
   overflow: hidden;
 }
+
+.login-logo-img {
+  width: 90px;        /* Define uma largura ideal para o topo do painel */
+  height: 90px;       /* Mantém a proporção quadrada perfeita */
+  object-fit: cover;  /* Garante que o ajuste de imagem fique perfeito */
+  border-radius: 50%; /* Deixa as bordas ligeiramente arredondadas se necessário */
+}
  
 .login-toggle-btn {
   padding: 9px 0;
@@ -131,7 +138,7 @@
 }
  
 .login-toggle-btn:hover {
-  background: #22262d;
+  background: #989fa0a9;
   color: var(--c-text);
 }
  
